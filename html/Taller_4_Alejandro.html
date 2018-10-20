@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Taller_4_Alejandro</title><meta name="generator" content="MATLAB 9.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-05-19"><meta name="DC.source" content="Taller_4_Alejandro.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Anexo</a></li><li><a href="#2">PUNTO 1</a></li><li><a href="#3">PUNTO 2</a></li><li><a href="#4">PUNTO 3</a></li><li><a href="#5">PUNTO 4</a></li><li><a href="#6">PUNTO 5</a></li><li><a href="#8">PUNTO 6</a></li><li><a href="#9">Punto 7</a></li></ul></div><h2 id="1">Anexo</h2><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%                   UNIVERSIDAD NACIONAL DE COLOMBIA                    %</span>
+<span class="comment">%                   ROB&Oacute;TICA - Taller No. 4                             %</span>
+<span class="comment">%                   ALEJANDRO CANO RICO - 25481055                      %</span>
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+</pre><h2 id="2">PUNTO 1</h2><pre class="codeinput"><span class="comment">% Propiedades jacob0- jacobiano respecto a la base</span>
+<span class="comment">% j0 = R.jacob0(q, options)</span>
+
+<span class="comment">% 'rpy' Calcula el jacobiano anal&iacute;tico con velocidad de rotaci&oacute;n</span>
+<span class="comment">%     en t&eacute;rminos de &aacute;ngulos de  roll-pitch-yaw</span>
+<span class="comment">% 'eul' Calcula el Jacobiano anal&iacute;tico  con tasas de rotaci&oacute;n en</span>
+<span class="comment">%     t&eacute;rminos de &aacute;ngulos de Euler</span>
+<span class="comment">% 'trans' Devuelve la submatriz translacional del Jacobiano</span>
+<span class="comment">% 'rot' Devuelve la Submatriz rotacional de Jacobiano</span>
+
+<span class="comment">% Propiedades jacobn - jacobiano respecto a la herramienta</span>
+<span class="comment">% jn = R.jacobn(q, options)</span>
+
+<span class="comment">% 'trans' Devuelve la submatriz translacional jacobiana</span>
+<span class="comment">% 'podredumbre' Devuelve submatriz rotacional jacobiana</span>
+</pre><h2 id="3">PUNTO 2</h2><pre class="codeinput"><span class="comment">%   El elipsoide de manipulabilidad es la capacidad de cambio en posici&oacute;n</span>
+<span class="comment">%   y orientaci&oacute;n del efector final de un sistema rob&oacute;tico en una confi-</span>
+<span class="comment">%   guraci&oacute;n dada.</span>
+<span class="comment">%</span>
+<span class="comment">%   La manipulabilidad puede verse como un elipsoide en el espacio</span>
+<span class="comment">%   Euclidiano n-dimensional cuya geometr&iacute;a puede definirse al resolver</span>
+<span class="comment">%   la siguiente inecuaci&oacute;n.')</span>
+<span class="comment">%</span>
+<span class="comment">%   sqrt((q1^2)+(q2^2)+ . . . +(qn^2)) &lt;= 1</span>
+<span class="comment">%   &Eacute;sta, representa el conjunto de todas las velocidades que son reali-</span>
+<span class="comment">%   zables por una articulaci&oacute;n tal que la norma Eucl&iacute;dea de   es infe-</span>
+<span class="comment">%   rior a la unidad. De dicha inecuaci&oacute;n se tiene que el efector final</span>
+<span class="comment">%   dispone de mayor capacidad de movimiento en la direcci&oacute;n del eje mayor</span>
+<span class="comment">%   del elipsoide. Por otra parte, en la direcci&oacute;n del eje menor la</span>
+<span class="comment">%   capacidad de desarrollar velocidad ser&aacute; menor. Este elipsoide simbo-</span>
+<span class="comment">%   liza la capacidad de manipulaci&oacute;n y se le conoce como Elipsoide de</span>
+<span class="comment">%   Manipulabilidad.</span>
+</pre><h2 id="4">PUNTO 3</h2><pre class="codeinput"><span class="comment">% El numero de condicion permite obtener un valor cuantitativo asociado con el desempe&ntilde;o</span>
+<span class="comment">% cinetostatico del manipulador en determinadas poses de su espacio de trabajo. El valor</span>
+<span class="comment">% minimo que puede tomar el numero de condicion es la unidad, en ese caso se dice que esa</span>
+<span class="comment">% pose es isotropica y evidentemente es la mejor condicion esperada. Por otro lado, el</span>
+<span class="comment">% numero de condicion puede tender a infinito y en ese caso se dice que la pose del</span>
+<span class="comment">% manipuladores singular.</span>
+</pre><h2 id="5">PUNTO 4</h2><pre class="codeinput"><span class="comment">% La formulacion para el modelo de cinematica directa al plantearse de</span>
+<span class="comment">% manera inversa, al tener muchos senos y cosenos es bastante complejo y</span>
+<span class="comment">% habitualmente analiticamente irrealizable.</span>
+
+<span class="comment">% La Jacobiana puede considerarse como el n&uacute;cleo de una aproximaci&oacute;n lineal</span>
+<span class="comment">% del modelo cinematico del manipulador, es decir,por  su  propia  definicion</span>
+<span class="comment">% la  Jacobiana  no  dice  aproximadamente  cuanto  cambia E en  el  espacio</span>
+<span class="comment">% cartesiano  en  el  entorno  de  un  punto  articular q0  ante  variaciones</span>
+<span class="comment">% articulares.  De  hecho,  cada  columna  de  la  Jacobiana  nos  informa</span>
+<span class="comment">% del  cambio  que  sufre  el  extremo  por  la  variaci&oacute;n  de  la</span>
+<span class="comment">% correspondiente  variable  articular.  Esta  estimacion (como  en  cualquier</span>
+<span class="comment">% aproximacion  tangencial)  sera peor en la medida en que nos alejamos mas</span>
+<span class="comment">% del punto en el que se ha calculado la Jacobiana, que  normalmente  expresamos</span>
+<span class="comment">% en  base  al  incremento  infinitesimal  respecto  del  tiempo,  pero</span>
+<span class="comment">% que  nos  muestra  la  aproximaci&oacute;n  incremental.  Es  decir,  respecto  de  un  punto</span>
+<span class="comment">% E0, q0 se puede escribir como:</span>
+
+<span class="comment">% delta(E)=J(q0)*delt(q)</span>
+m1=imread(<span class="string">'jacobiano.jpg'</span>);
+figure (1)
+imshow(m1);
+</pre><img vspace="5" hspace="5" src="Taller_4_Alejandro_01.png" alt=""> <h2 id="6">PUNTO 5</h2><pre class="codeinput">clear <span class="string">all</span>
+clc
+
+syms <span class="string">q1</span> <span class="string">q2</span> <span class="string">q3</span> <span class="string">L1</span> <span class="string">L2</span>
+
+clear <span class="string">all</span>;
+clc;
+syms <span class="string">q1</span> <span class="string">q2</span> <span class="string">q3</span> <span class="string">L1</span> <span class="string">L2</span> <span class="string">real</span>
+<span class="comment">% L1 = 2;</span>
+<span class="comment">% L2 = 2;</span>
+
+
+L(1) = Link(<span class="string">'revolute'</span> ,<span class="string">'alpha'</span>,0,    <span class="string">'a'</span>,0, <span class="string">'d'</span>,0     ,<span class="string">'offset'</span>,0, <span class="string">'modified'</span>);
+L(2) = Link(<span class="string">'revolute'</span> ,<span class="string">'alpha'</span>,0,    <span class="string">'a'</span>,L1, <span class="string">'d'</span>,0     ,<span class="string">'offset'</span>,0, <span class="string">'modified'</span>);
+RR = SerialLink(L,<span class="string">'name'</span>,<span class="string">'2R'</span>)
+RR.tool=transl(L2,0,0);
+
+A01 = simplify(L(1).A(q1));
+A12 = simplify(L(2).A(q2));
+A23 = (transl(L2,0,0));
+
+<span class="comment">%Cinematica Directa</span>
+A03 = simplify(A01*A12*A23);
+
+
+<span class="comment">% Calculo de los 0Zi</span>
+z01 = A01(1:3,3);           <span class="comment">% Articulaci&oacute;n 1</span>
+A02 = simplify(A01*A12);
+z02 = A02(1:3,3);           <span class="comment">% Articulaci&oacute;n 2</span>
+A03 = simplify(A02*A23);
+z03 = A03(1:3,3);           <span class="comment">% Efector Final</span>
+
+
+<span class="comment">% Calculo del vector ^iP_n</span>
+p23 = A03(1:3,4) - A02(1:3,4);
+p13 = A03(1:3,4) - A01(1:3,4);
+
+
+<span class="comment">% Calculo de las columnas del jabobiano</span>
+J1 =simplify([(skew(z01) * p13);      z01]); <span class="comment">% Rotacional</span>
+J2 =simplify([(skew(z02) * p23);      z02]); <span class="comment">% Rotacional</span>
+
+disp(<span class="string">'Jacobiano Geometrico o Convencional'</span>)
+Jgeo = simplify([J1, J2])       <span class="comment">% Jacobiano Geometrico</span>
+
+
+
+
+disp(<span class="string">'Jacobiano geometrico por propagacion de velocidades'</span>)
+T01=A01;
+T12=A12;
+T23=A23;
+T03=A03;
+
+syms <span class="string">q1p</span> <span class="string">q2p</span> <span class="string">real</span>
+
+
+v00 = [0 0 0]';
+w00 = [0 0 0]';
+w11 = T01(1:3,1:3)'*w00+q1p*T01(1:3,3);
+v11 = T01(1:3,1:3)'*(v00 + simplify(cross(w00,T01(1:3,4))));
+w22 = T12(1:3,1:3)'*w11+q2p*T12(1:3,3);
+v22 = simplify(T12(1:3,1:3)'*(v11 + simplify(cross(w11,T12(1:3,4)))));
+w33 = T23(1:3,1:3)'*w22+0*T23(1:3,3);
+v33 = simplify(T23(1:3,1:3)'*(v22 + cross(w22,T23(1:3,4))));
+v03 = simplify(T03(1:3,1:3)*v33)
+w03 = w33
+<span class="comment">% Se obtiene el jacobiano al poner el vector [v03;w03] en terminos</span>
+J1g= [v03;w03];
+J1g=subs(J1g,q1p,1);
+J1g=subs(J1g,q2p,0);
+
+J2g= [v03;w03]
+J2g=subs(J2g,q1p,0);
+J2g=subs(J2g,q2p,1);
+
+
+disp(<span class="string">'Jacobiano Analitico'</span>)
+
+Jgeo2=simplify([J1g, J2g])
+<span class="comment">% Jacobiao analitico</span>
+
+pos_x = T03(1,4);
+pos_y = T03(2,4);
+
+<span class="comment">% Casillas del Jacobiano</span>
+
+J11 = diff(pos_x,q1);
+J12 = diff(pos_x,q2);
+
+J21 = diff(pos_y,q1);
+J22 = diff(pos_y,q2);
+
+
+Jsym = [J11 J12 ;
+        J21 J22];
+
+
+L1 = 2;
+L2 = 2;
+q1 = pi/12;
+q2 = pi/6;
+
+disp(<span class="string">'Jacobiano Geometrico Evaluado'</span>)
+Jgeo_eval = eval(Jgeo)          <span class="comment">% Jacobiano Geometrico Evaluado</span>
+
+q1_punto = pi/4;
+q2_punto = pi/2;
+q_punto = [q1_punto; q2_punto];
+
+disp(<span class="string">'b. Vector de Velocidades'</span>)
+VW = Jgeo_eval*q_punto
+</pre><pre class="codeoutput"> 
+RR = 
+ 
+2R (2 axis, RR, modDH, fastRNE)                                  
+                                                                 
++---+-----------+-----------+-----------+-----------+-----------+
+| j |     theta |         d |         a |     alpha |    offset |
++---+-----------+-----------+-----------+-----------+-----------+
+|  1|         q1|          0|          0|          0|          0|
+|  2|         q2|          0|         L1|          0|          0|
++---+-----------+-----------+-----------+-----------+-----------+
+                                                                 
+grav =    0  base = 1  0  0  0   tool =  1  0  0  0              
+          0         0  1  0  0           0  1  0  0              
+       9.81         0  0  1  0           0  0  1  0              
+                    0  0  0  1           0  0  0  1              
+ 
+Jacobiano Geometrico o Convencional
+ 
+Jgeo =
+ 
+[ - L2*sin(q1 + q2) - L1*sin(q1), -L2*sin(q1 + q2)]
+[   L2*cos(q1 + q2) + L1*cos(q1),  L2*cos(q1 + q2)]
+[                              0,                0]
+[                              0,                0]
+[                              0,                0]
+[                              1,                1]
+ 
+Jacobiano geometrico por propagacion de velocidades
+ 
+v03 =
+ 
+ - L1*q1p*sin(q1) - L2*q1p*sin(q1 + q2) - L2*q2p*sin(q1 + q2)
+   L2*q1p*cos(q1 + q2) + L2*q2p*cos(q1 + q2) + L1*q1p*cos(q1)
+                                                            0
+ 
+ 
+w03 =
+ 
+         0
+         0
+ q1p + q2p
+ 
+ 
+J2g =
+ 
+ - L1*q1p*sin(q1) - L2*q1p*sin(q1 + q2) - L2*q2p*sin(q1 + q2)
+   L2*q1p*cos(q1 + q2) + L2*q2p*cos(q1 + q2) + L1*q1p*cos(q1)
+                                                            0
+                                                            0
+                                                            0
+                                                    q1p + q2p
+ 
+Jacobiano Analitico
+ 
+Jgeo2 =
+ 
+[ - L2*sin(q1 + q2) - L1*sin(q1), -L2*sin(q1 + q2)]
+[   L2*cos(q1 + q2) + L1*cos(q1),  L2*cos(q1 + q2)]
+[                              0,                0]
+[                              0,                0]
+[                              0,                0]
+[                              1,                1]
+ 
+Jacobiano Geometrico Evaluado
+
+Jgeo_eval =
+
+   -1.9319   -1.4142
+    3.3461    1.4142
+         0         0
+         0         0
+         0         0
+    1.0000    1.0000
+
+b. Vector de Velocidades
+
+VW =
+
+   -3.7387
+    4.8494
+         0
+         0
+         0
+    2.3562
+
+</pre><pre class="codeinput">L1 = 2;
+L2 = 2;
+l=L1;
+L(1) = Link(<span class="string">'revolute'</span> ,<span class="string">'alpha'</span>,0,    <span class="string">'a'</span>,0, <span class="string">'d'</span>,0     ,<span class="string">'offset'</span>,0, <span class="string">'modified'</span>);
+L(2) = Link(<span class="string">'revolute'</span> ,<span class="string">'alpha'</span>,0,    <span class="string">'a'</span>,L1, <span class="string">'d'</span>,0     ,<span class="string">'offset'</span>,0, <span class="string">'modified'</span>);
+dosr = SerialLink(L,<span class="string">'name'</span>,<span class="string">'2R'</span>)
+dosr.tool=transl(L2,0,0);
+vector=[2.8*ones(1,10);linspace(1,2.8,10)];
+q_elip = ones(2,10);
+<span class="keyword">for</span> i=1:length(vector)
+    x = vector(1,i);
+    y = vector(2,i);
+    D = (x^2 + y^2 - l^2 -l^2)/(2 *l* l);
+    <span class="keyword">if</span> abs(D)&gt;1
+        disp(<span class="string">'D&gt;1'</span>);
+        Q1=NaN;
+        Q2=NaN;
+    <span class="keyword">else</span>
+        q2_1=atan2(sqrt(1-D^2),D);
+        q2_2=atan2(-sqrt(1-D^2),D);
+        q1_1 = atan2(y,x) - atan2(l * sin(q2_1),l + l * cos(q2_1));
+        q1_2 = atan2(y,x) - atan2(l * sin(q2_2),l + l * cos(q2_2));
+        Q1=[q1_1,q2_1];
+        Q2=[q1_2,q2_2];
+        q_elip(1,i)=q1_1;
+        q_elip(2,i)=q2_1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+figure
+grid <span class="string">on</span>
+hold <span class="string">on</span>
+trplot(eye(4),<span class="string">'rgb'</span>)
+axis([-6 6 -6 6])
+<span class="keyword">for</span> i=1:length(vector)
+    j=dosr.jacob0(q_elip(:,i));
+    j=[j(1,:);j(2,:)];
+    c=dosr.fkine(q_elip(:,i));
+    dosr.plot(q_elip(:,i)')
+    plot_ellipse(j*j',c(1:2,4))
+    pause(1)
+<span class="keyword">end</span>
+</pre><pre class="codeoutput"> 
+dosr = 
+ 
+2R (2 axis, RR, modDH, fastRNE)                                  
+                                                                 
++---+-----------+-----------+-----------+-----------+-----------+
+| j |     theta |         d |         a |     alpha |    offset |
++---+-----------+-----------+-----------+-----------+-----------+
+|  1|         q1|          0|          0|          0|          0|
+|  2|         q2|          0|          2|          0|          0|
++---+-----------+-----------+-----------+-----------+-----------+
+                                                                 
+grav =    0  base = 1  0  0  0   tool =  1  0  0  0              
+          0         0  1  0  0           0  1  0  0              
+       9.81         0  0  1  0           0  0  1  0              
+                    0  0  0  1           0  0  0  1              
+ 
+</pre><img vspace="5" hspace="5" src="Taller_4_Alejandro_02.png" alt=""> <img vspace="5" hspace="5" src="Taller_4_Alejandro_03.png" alt=""> <img vspace="5" hspace="5" src="Taller_4_Alejandro_04.png" alt=""> <h2 id="8">PUNTO 6</h2><pre class="codeinput">clear <span class="string">all</span>
+clc
+warning(<span class="string">'off'</span>,<span class="string">'all'</span>)
+syms <span class="string">q1</span> <span class="string">q2</span> <span class="string">q3</span> <span class="string">q4</span> <span class="string">l1</span> <span class="string">l2</span> <span class="string">l3</span> <span class="string">real</span>
+L(1) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,0,<span class="string">'d'</span>,l1,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>, <span class="string">'sym'</span>);
+L(2) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>, <span class="string">'sym'</span>);
+L(3) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l2,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,-pi/2,<span class="string">'modified'</span>, <span class="string">'sym'</span>);
+L(4) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l3,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>, <span class="string">'sym'</span>);
+
+tresR=SerialLink(L, <span class="string">'name'</span>,<span class="string">'tresR'</span>)
+
+
+M0A1=L(1).A(q1);
+M1A2=L(2).A(q2);
+M2A3=L(3).A(q3);
+M3A4=L(4).A(q4);
+
+z01 = M0A1(1:3,3); <span class="comment">% art 1</span>
+M0A2 = M0A1*M1A2;
+z02 = M0A2(1:3,3); <span class="comment">% Art 2</span>
+M0A3=M0A2*M2A3;
+z03=M0A3(1:3,3);
+M0A4=M0A3*M3A4;
+z04=M0A4(1:3,3);
+
+p34 = M0A4(1:3,4) - M0A3(1:3,4);
+p24 = M0A4(1:3,4) - M0A2(1:3,4);
+p14 = M0A4(1:3,4) - M0A1(1:3,4);
+p44 = M0A4(1:3,4) - M0A4(1:3,4);
+
+J1 =simplify([(skew(z01) * p14); z01]);  <span class="comment">% Rotacional</span>
+J2 = simplify([(skew(z02) * p24); z02]); <span class="comment">% Rotacional</span>
+J3 =simplify([(skew(z03) * p34); z03]); <span class="comment">% Rotacional</span>
+J4 = simplify([(skew(z04) * p44); z04]); <span class="comment">% Rotacional</span>
+
+<span class="comment">%jacobiano geom&eacute;trico</span>
+   j0n=simplify([J1,J2,J3,J4])
+
+q1=pi/4;
+q2=pi/4;
+q3=pi/2;
+q4=0;
+l2=1;
+l3=1;
+l1=1;
+
+j0n =eval(j0n)
+
+
+
+
+l = [1 1 1];
+q = [pi/4 pi/4 pi/2 0];
+
+L(1) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,0,<span class="string">'d'</span>,l(1),<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+L(2) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,pi/2,<span class="string">'a'</span>,0,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+L(3) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l(2),<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+L(4) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l(3),<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+tres=SerialLink(L, <span class="string">'name'</span>,<span class="string">'tresR'</span>);
+l1 = l(1);
+l2 = l(2);
+l3 = l(3);
+q1 = q(1);
+q2 = q(2);
+q3 = q(3);
+q4 = q(4);
+
+j0 = (tres.jacob0([q1 q2 q3 q4]))
+</pre><pre class="codeoutput"> 
+tresR = 
+ 
+tresR (4 axis, RRRR, modDH, fastRNE)                             
+                                                                 
++---+-----------+-----------+-----------+-----------+-----------+
+| j |     theta |         d |         a |     alpha |    offset |
++---+-----------+-----------+-----------+-----------+-----------+
+|  1|         q1|         l1|          0|          0|          0|
+|  2|         q2|          0|          0|      -pi/2|          0|
+|  3|         q3|          0|         l2|          0|      -pi/2|
+|  4|         q4|          0|         l3|          0|          0|
++---+-----------+-----------+-----------+-----------+-----------+
+                                                                 
+grav =    0  base = 1  0  0  0   tool =  1  0  0  0              
+          0         0  1  0  0           0  1  0  0              
+       9.81         0  0  1  0           0  0  1  0              
+                    0  0  0  1           0  0  0  1              
+ 
+ 
+j0n =
+ 
+[ -sin(q1)*(l3*sin(q2 + q3) + l2*cos(q2)), cos(q1)*(l3*cos(q2 + q3) - l2*sin(q2)), l3*cos(q2 + q3)*cos(q1),        0]
+[  cos(q1)*(l3*sin(q2 + q3) + l2*cos(q2)), sin(q1)*(l3*cos(q2 + q3) - l2*sin(q2)), l3*cos(q2 + q3)*sin(q1),        0]
+[                                       0,         - l3*sin(q2 + q3) - l2*cos(q2),        -l3*sin(q2 + q3),        0]
+[                                       0,                               -sin(q1),                -sin(q1), -sin(q1)]
+[                                       0,                                cos(q1),                 cos(q1),  cos(q1)]
+[                                       1,                                      0,                       0,        0]
+ 
+
+j0n =
+
+   -1.0000   -1.0000   -0.5000         0
+    1.0000   -1.0000   -0.5000         0
+         0   -1.4142   -0.7071         0
+         0   -0.7071   -0.7071   -0.7071
+         0    0.7071    0.7071    0.7071
+    1.0000         0         0         0
+
+
+j0 =
+
+   -0.0000   -1.0000   -0.5000         0
+    0.0000   -1.0000   -0.5000         0
+   -0.0000         0   -0.7071         0
+    0.0000    0.7071    0.7071    0.7071
+    0.0000   -0.7071   -0.7071   -0.7071
+    1.0000    0.0000    0.0000    0.0000
+
+</pre><h2 id="9">Punto 7</h2><pre class="codeinput">clear <span class="string">all</span>
+clc
+
+syms <span class="string">q1</span> <span class="string">q2</span> <span class="string">q3</span> <span class="string">q4</span> <span class="string">q5</span> <span class="string">q1p</span> <span class="string">q2p</span> <span class="string">q3p</span> <span class="string">q4p</span> <span class="string">q5p</span> <span class="string">l1</span> <span class="string">real</span>
+<span class="comment">% l1 = 1;</span>
+L(1) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(2) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,-pi/2,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(3) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(4) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+L(5) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l1,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+PPPR = SerialLink(L, <span class="string">'name'</span>,<span class="string">'PPPR'</span>);
+
+
+<span class="comment">% Cinem&Atilde;&iexcl;tica directa</span>
+T01 = simplify(L(1).A(q1));
+T12 = simplify(L(2).A(q2));
+T12(1,1) = 0;
+T12(2,1) = 0;
+T12(2,2) = 0;
+T12(3,2) = 0;
+T12(3,3) = 0;
+T12(3,4) = 0;
+T23 = simplify(L(3).A(q3));
+T23(2,2) = 0;
+T23(3,3) = 0;
+T23(3,4) = 0;
+T34 = simplify(L(4).A(q4));
+T34(2,1) = 0;
+T34(2,2) = 0;
+T34(3,3) = 0;
+T45 = simplify(L(5).A(q5));
+
+T02 = simplify(T01*T12);
+T03 = simplify(T01*T12*T23);
+T04 = simplify(T01*T12*T23*T34);
+T05 = simplify(T01*T12*T23*T34*T45);
+
+<span class="comment">% Vector de posicion</span>
+x = T05(1,4);
+y = T05(2,4);
+z = T05(3,4);
+<span class="comment">% Orientacion en Euler ZYZ</span>
+
+<span class="comment">% Orientacion en Euler ZYZ</span>
+phi = pi/2;
+theta = pi/2;
+psi = q4 + q5;
+
+<span class="comment">% Coordenadas generalizadas</span>
+X = [x; y; z; phi; theta; psi];
+<span class="comment">% Jacobiano Analitico</span>
+<span class="comment">% Se deriva por columnas 6 x 1.</span>
+
+J1 = [diff(x, q1) diff(y, q1) diff(z, q1) diff(phi, q1) diff(theta, q1) diff(psi,q1)]';
+J2 = [diff(x, q2) diff(y, q2) diff(z, q2) diff(phi, q2) diff(theta, q2) diff(psi,q2)]';
+J3 = [diff(x, q3) diff(y, q3) diff(z, q3) diff(phi, q3) diff(theta, q3) diff(psi,q3)]';
+J4 = [diff(x, q4) diff(y, q4) diff(z, q4) diff(phi, q4) diff(theta, q4) diff(psi,q4)]';
+J5 = [diff(x, q5) diff(y, q5) diff(z, q5) diff(phi, q5) diff(theta, q5) diff(psi,q5)]';
+<span class="comment">% Jacobiano analitico</span>
+Janalitico = [J1 J2 J3 J4 J5]
+
+<span class="comment">% Jacobiano geometrico</span>
+<span class="comment">% Calculo de los 0Zi</span>
+z01 = T01(1:3,3); <span class="comment">% Art 1</span>
+z02 = T02(1:3,3); <span class="comment">% Art 2</span>
+z03 = T03(1:3,3); <span class="comment">% Art 3</span>
+z04 = T04(1:3,3); <span class="comment">% Art 4</span>
+z05 = T05(1:3,3); <span class="comment">% Art 5</span>
+<span class="comment">% Calculo del vector ^iP_n</span>
+p55 = T05(1:3,4) - T05(1:3,4);
+p45 = T05(1:3,4) - T04(1:3,4);
+p35 = T05(1:3,4) - T03(1:3,4);
+p25 = T05(1:3,4) - T02(1:3,4);
+p15 = T05(1:3,4) - T01(1:3,4);
+
+<span class="comment">% Calculo de las columnas del jabobiano</span>
+J1 =simplify([z01              ;zeros(3,1)]); <span class="comment">% Rotacional</span>
+J2 =simplify([z02              ;zeros(3,1)]); <span class="comment">% Prismatica</span>
+J3 =simplify([z03              ;zeros(3,1)]); <span class="comment">% Prismatica</span>
+J4 =simplify([(skew(z04) * p45);      z04]); <span class="comment">% Rotacional</span>
+J5 =simplify([(skew(z05) * p55);      z05]); <span class="comment">% Rotacional</span>
+
+Jgeo = simplify([J1, J2, J3, J4, J5])
+
+<span class="comment">% * Dada la configuraci&Atilde;&sup3;n [q1 q2 q3 q4 ] = [1 1 1 pi/2]</span>
+<span class="comment">% y el parametro l1 = 1m, determine J0 .</span>
+
+l1 = 1
+q = [1 1 1 pi/2 0];
+
+L(1) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(2) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,-pi/2,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(3) = Link(<span class="string">'prismatic'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'theta'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'qlim'</span>,[0 100],<span class="string">'modified'</span>);
+L(4) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,-pi/2,<span class="string">'a'</span>,0,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+L(5) = Link(<span class="string">'revolute'</span>,<span class="string">'alpha'</span>,0,<span class="string">'a'</span>,l1,<span class="string">'d'</span>,0,<span class="string">'offset'</span>,0,<span class="string">'modified'</span>);
+P3R = SerialLink(L, <span class="string">'name'</span>,<span class="string">'3PR'</span>);
+
+q1 = q(1);
+q2 = q(2);
+q3 = q(3);
+q4 = q(4);
+q5 = q(5);
+
+Jgeo =eval(Jgeo)
+
+j0 = (P3R.jacob0([q1 q2 q3 q4 q5]))
+
+<span class="comment">% * Dado el vector q punto= [1,5 1,2 1,8 pi/4 ]' encuentre &aacute;&ordm;&#352; usando la configuraci&Atilde;&sup3;n del item anterior.</span>
+<span class="comment">% &Acirc;&iquest;Que significado tiene el vector de velocidades generalizados? (Explique su respuesta).</span>
+
+q_dot = [1.5 1.2 1.8 pi/4 0]';
+X = Jgeo*q_dot
+
+<span class="comment">% se puede observar en la respuesta que tiene velocicdad en los 3 ejes</span>
+<span class="comment">% cartesianos, al tener 1 articualicon prismatica en cada uno, y tendra una</span>
+<span class="comment">% velocidad angular en el eje y, que es coo se encuentra dispuesta la</span>
+<span class="comment">% cuarta articulacion, la cual es rotacional.</span>
+</pre><pre class="codeoutput"> 
+Janalitico =
+ 
+[ 0, 0, 1, -l1*cos(q4), 0]
+[ 0, 1, 0,           0, 0]
+[ 1, 0, 0, -l1*sin(q4), 0]
+[ 0, 0, 0,           0, 0]
+[ 0, 0, 0,           0, 0]
+[ 0, 0, 0,           1, 1]
+ 
+ 
+Jgeo =
+ 
+[ 0, 0, 1, -l1*cos(q4),  0]
+[ 0, 1, 0,           0,  0]
+[ 1, 0, 0, -l1*sin(q4),  0]
+[ 0, 0, 0,           0,  0]
+[ 0, 0, 0,          -1, -1]
+[ 0, 0, 0,           0,  0]
+ 
+
+l1 =
+
+     1
+
+
+Jgeo =
+
+         0         0    1.0000   -0.0000         0
+         0    1.0000         0         0         0
+    1.0000         0         0   -1.0000         0
+         0         0         0         0         0
+         0         0         0   -1.0000   -1.0000
+         0         0         0         0         0
+
+
+j0 =
+
+   -0.0000         0    1.0000   -0.0000         0
+         0    1.0000    0.0000    0.0000         0
+    1.0000    0.0000   -0.0000   -1.0000         0
+         0         0         0    0.0000    0.0000
+         0         0         0   -1.0000   -1.0000
+         0         0         0   -0.0000   -0.0000
+
+
+X =
+
+    1.8000
+    1.2000
+    0.7146
+         0
+   -0.7854
+         0
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Anexo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   UNIVERSIDAD NACIONAL DE COLOMBIA                    %
+%                   ROBÓTICA - Taller No. 4                             %
+%                   ALEJANDRO CANO RICO - 25481055                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% PUNTO 1 
+
+% Propiedades jacob0- jacobiano respecto a la base
+% j0 = R.jacob0(q, options) 
+
+% 'rpy' Calcula el jacobiano analítico con velocidad de rotación 
+%     en términos de ángulos de  roll-pitch-yaw
+% 'eul' Calcula el Jacobiano analítico  con tasas de rotación en 
+%     términos de ángulos de Euler
+% 'trans' Devuelve la submatriz translacional del Jacobiano
+% 'rot' Devuelve la Submatriz rotacional de Jacobiano
+
+% Propiedades jacobn - jacobiano respecto a la herramienta
+% jn = R.jacobn(q, options) 
+
+% 'trans' Devuelve la submatriz translacional jacobiana
+% 'podredumbre' Devuelve submatriz rotacional jacobiana
+
+
+%% PUNTO 2
+
+%   El elipsoide de manipulabilidad es la capacidad de cambio en posición
+%   y orientación del efector final de un sistema robótico en una confi-
+%   guración dada.
+%
+%   La manipulabilidad puede verse como un elipsoide en el espacio
+%   Euclidiano n-dimensional cuya geometría puede definirse al resolver
+%   la siguiente inecuación.')
+%
+%   sqrt((q1^2)+(q2^2)+ . . . +(qn^2)) <= 1
+%   Ésta, representa el conjunto de todas las velocidades que son reali-
+%   zables por una articulación tal que la norma Euclídea de   es infe-
+%   rior a la unidad. De dicha inecuación se tiene que el efector final
+%   dispone de mayor capacidad de movimiento en la dirección del eje mayor
+%   del elipsoide. Por otra parte, en la dirección del eje menor la
+%   capacidad de desarrollar velocidad será menor. Este elipsoide simbo-
+%   liza la capacidad de manipulación y se le conoce como Elipsoide de
+%   Manipulabilidad.
+
+%% PUNTO 3
+
+% El numero de condicion permite obtener un valor cuantitativo asociado con el desempeño 
+% cinetostatico del manipulador en determinadas poses de su espacio de trabajo. El valor 
+% minimo que puede tomar el numero de condicion es la unidad, en ese caso se dice que esa 
+% pose es isotropica y evidentemente es la mejor condicion esperada. Por otro lado, el 
+% numero de condicion puede tender a infinito y en ese caso se dice que la pose del 
+% manipuladores singular.
+
+%% PUNTO 4
+
+% La formulacion para el modelo de cinematica directa al plantearse de
+% manera inversa, al tener muchos senos y cosenos es bastante complejo y
+% habitualmente analiticamente irrealizable.
+
+% La Jacobiana puede considerarse como el núcleo de una aproximación lineal 
+% del modelo cinematico del manipulador, es decir,por  su  propia  definicion 
+% la  Jacobiana  no  dice  aproximadamente  cuanto  cambia E en  el  espacio
+% cartesiano  en  el  entorno  de  un  punto  articular q0  ante  variaciones 
+% articulares.  De  hecho,  cada  columna  de  la  Jacobiana  nos  informa 
+% del  cambio  que  sufre  el  extremo  por  la  variación  de  la  
+% correspondiente  variable  articular.  Esta  estimacion (como  en  cualquier  
+% aproximacion  tangencial)  sera peor en la medida en que nos alejamos mas 
+% del punto en el que se ha calculado la Jacobiana, que  normalmente  expresamos
+% en  base  al  incremento  infinitesimal  respecto  del  tiempo,  pero  
+% que  nos  muestra  la  aproximación  incremental.  Es  decir,  respecto  de  un  punto  
+% E0, q0 se puede escribir como:
+
+% delta(E)=J(q0)*delt(q)
+m1=imread('jacobiano.jpg');
+figure (1)
+imshow(m1);
+
+%% PUNTO 5
+
+clear all
+clc
+
+syms q1 q2 q3 L1 L2
+
+clear all;
+clc;
+syms q1 q2 q3 L1 L2 real
+% L1 = 2;
+% L2 = 2;
+
+
+L(1) = Link('revolute' ,'alpha',0,    'a',0, 'd',0     ,'offset',0, 'modified');
+L(2) = Link('revolute' ,'alpha',0,    'a',L1, 'd',0     ,'offset',0, 'modified');
+RR = SerialLink(L,'name','2R')
+RR.tool=transl(L2,0,0);
+
+A01 = simplify(L(1).A(q1));
+A12 = simplify(L(2).A(q2));
+A23 = (transl(L2,0,0));
+
+%Cinematica Directa
+A03 = simplify(A01*A12*A23);
+
+
+% Calculo de los 0Zi
+z01 = A01(1:3,3);           % Articulación 1
+A02 = simplify(A01*A12); 
+z02 = A02(1:3,3);           % Articulación 2
+A03 = simplify(A02*A23);
+z03 = A03(1:3,3);           % Efector Final
+
+
+% Calculo del vector ^iP_n
+p23 = A03(1:3,4) - A02(1:3,4);
+p13 = A03(1:3,4) - A01(1:3,4);
+
+
+% Calculo de las columnas del jabobiano
+J1 =simplify([(skew(z01) * p13);      z01]); % Rotacional
+J2 =simplify([(skew(z02) * p23);      z02]); % Rotacional 
+
+disp('Jacobiano Geometrico o Convencional')
+Jgeo = simplify([J1, J2])       % Jacobiano Geometrico
+
+
+
+
+disp('Jacobiano geometrico por propagacion de velocidades') 
+T01=A01;
+T12=A12;
+T23=A23;
+T03=A03;
+
+syms q1p q2p real
+
+
+v00 = [0 0 0]';
+w00 = [0 0 0]';
+w11 = T01(1:3,1:3)'*w00+q1p*T01(1:3,3);
+v11 = T01(1:3,1:3)'*(v00 + simplify(cross(w00,T01(1:3,4))));
+w22 = T12(1:3,1:3)'*w11+q2p*T12(1:3,3);
+v22 = simplify(T12(1:3,1:3)'*(v11 + simplify(cross(w11,T12(1:3,4)))));
+w33 = T23(1:3,1:3)'*w22+0*T23(1:3,3);
+v33 = simplify(T23(1:3,1:3)'*(v22 + cross(w22,T23(1:3,4))));
+v03 = simplify(T03(1:3,1:3)*v33)
+w03 = w33
+% Se obtiene el jacobiano al poner el vector [v03;w03] en terminos  
+J1g= [v03;w03];
+J1g=subs(J1g,q1p,1);
+J1g=subs(J1g,q2p,0);
+
+J2g= [v03;w03]
+J2g=subs(J2g,q1p,0);
+J2g=subs(J2g,q2p,1);
+
+
+disp('Jacobiano Analitico')
+
+Jgeo2=simplify([J1g, J2g])
+% Jacobiao analitico
+
+pos_x = T03(1,4);
+pos_y = T03(2,4);
+
+% Casillas del Jacobiano
+
+J11 = diff(pos_x,q1);
+J12 = diff(pos_x,q2);
+
+J21 = diff(pos_y,q1);
+J22 = diff(pos_y,q2);
+
+
+Jsym = [J11 J12 ;
+        J21 J22];
+    
+
+L1 = 2;
+L2 = 2;
+q1 = pi/12;
+q2 = pi/6;
+
+disp('Jacobiano Geometrico Evaluado')
+Jgeo_eval = eval(Jgeo)          % Jacobiano Geometrico Evaluado
+
+q1_punto = pi/4;
+q2_punto = pi/2;
+q_punto = [q1_punto; q2_punto];
+
+disp('b. Vector de Velocidades')
+VW = Jgeo_eval*q_punto
+
+
+
+%%
+
+L1 = 2;
+L2 = 2;
+l=L1;
+L(1) = Link('revolute' ,'alpha',0,    'a',0, 'd',0     ,'offset',0, 'modified');
+L(2) = Link('revolute' ,'alpha',0,    'a',L1, 'd',0     ,'offset',0, 'modified');
+dosr = SerialLink(L,'name','2R')
+dosr.tool=transl(L2,0,0);
+vector=[2.8*ones(1,10);linspace(1,2.8,10)];
+q_elip = ones(2,10);
+for i=1:length(vector)
+    x = vector(1,i);
+    y = vector(2,i);
+    D = (x^2 + y^2 - l^2 -l^2)/(2 *l* l);
+    if abs(D)>1
+        disp('D>1');
+        Q1=NaN;
+        Q2=NaN;
+    else
+        q2_1=atan2(sqrt(1-D^2),D);
+        q2_2=atan2(-sqrt(1-D^2),D);
+        q1_1 = atan2(y,x) - atan2(l * sin(q2_1),l + l * cos(q2_1));
+        q1_2 = atan2(y,x) - atan2(l * sin(q2_2),l + l * cos(q2_2));
+        Q1=[q1_1,q2_1];
+        Q2=[q1_2,q2_2];
+        q_elip(1,i)=q1_1;
+        q_elip(2,i)=q2_1;
+    end
+end
+
+figure
+grid on
+hold on
+trplot(eye(4),'rgb')
+axis([-6 6 -6 6])
+for i=1:length(vector)
+    j=dosr.jacob0(q_elip(:,i));
+    j=[j(1,:);j(2,:)];
+    c=dosr.fkine(q_elip(:,i));
+    dosr.plot(q_elip(:,i)')
+    plot_ellipse(j*j',c(1:2,4))
+    pause(1)
+end
+
+%% PUNTO 6
+
+clear all
+clc
+warning('off','all')
+syms q1 q2 q3 q4 l1 l2 l3 real
+L(1) = Link('revolute','alpha',0,'a',0,'d',l1,'offset',0,'modified', 'sym');
+L(2) = Link('revolute','alpha',-pi/2,'a',0,'d',0,'offset',0,'modified', 'sym');
+L(3) = Link('revolute','alpha',0,'a',l2,'d',0,'offset',-pi/2,'modified', 'sym');
+L(4) = Link('revolute','alpha',0,'a',l3,'d',0,'offset',0,'modified', 'sym');
+
+tresR=SerialLink(L, 'name','tresR')
+
+
+M0A1=L(1).A(q1);
+M1A2=L(2).A(q2);
+M2A3=L(3).A(q3);
+M3A4=L(4).A(q4);
+
+z01 = M0A1(1:3,3); % art 1
+M0A2 = M0A1*M1A2;
+z02 = M0A2(1:3,3); % Art 2
+M0A3=M0A2*M2A3;
+z03=M0A3(1:3,3);
+M0A4=M0A3*M3A4;
+z04=M0A4(1:3,3);
+
+p34 = M0A4(1:3,4) - M0A3(1:3,4);
+p24 = M0A4(1:3,4) - M0A2(1:3,4);
+p14 = M0A4(1:3,4) - M0A1(1:3,4);
+p44 = M0A4(1:3,4) - M0A4(1:3,4);
+
+J1 =simplify([(skew(z01) * p14); z01]);  % Rotacional
+J2 = simplify([(skew(z02) * p24); z02]); % Rotacional 
+J3 =simplify([(skew(z03) * p34); z03]); % Rotacional
+J4 = simplify([(skew(z04) * p44); z04]); % Rotacional
+
+%jacobiano geométrico
+   j0n=simplify([J1,J2,J3,J4])
+   
+q1=pi/4;
+q2=pi/4;
+q3=pi/2;
+q4=0;
+l2=1;
+l3=1;
+l1=1;
+
+j0n =eval(j0n)
+
+
+
+
+l = [1 1 1];
+q = [pi/4 pi/4 pi/2 0];
+
+L(1) = Link('revolute','alpha',0,'a',0,'d',l(1),'offset',0,'modified');
+L(2) = Link('revolute','alpha',pi/2,'a',0,'d',0,'offset',0,'modified');
+L(3) = Link('revolute','alpha',0,'a',l(2),'d',0,'offset',0,'modified');
+L(4) = Link('revolute','alpha',0,'a',l(3),'d',0,'offset',0,'modified');
+tres=SerialLink(L, 'name','tresR');
+l1 = l(1);
+l2 = l(2);
+l3 = l(3);
+q1 = q(1);
+q2 = q(2);
+q3 = q(3);
+q4 = q(4);
+
+j0 = (tres.jacob0([q1 q2 q3 q4]))
+
+
+ 
+
+%% Punto 7
+clear all
+clc
+
+syms q1 q2 q3 q4 q5 q1p q2p q3p q4p q5p l1 real
+% l1 = 1;
+L(1) = Link('prismatic','alpha',0,'a',0,'theta',0,'offset',0,'qlim',[0 100],'modified');
+L(2) = Link('prismatic','alpha',-pi/2,'a',0,'theta',-pi/2,'offset',0,'qlim',[0 100],'modified');
+L(3) = Link('prismatic','alpha',-pi/2,'a',0,'theta',0,'offset',0,'qlim',[0 100],'modified');
+L(4) = Link('revolute','alpha',-pi/2,'a',0,'d',0,'offset',0,'modified');
+L(5) = Link('revolute','alpha',0,'a',l1,'d',0,'offset',0,'modified'); 
+PPPR = SerialLink(L, 'name','PPPR');
+
+
+% CinemÃ¡tica directa
+T01 = simplify(L(1).A(q1));
+T12 = simplify(L(2).A(q2));
+T12(1,1) = 0;
+T12(2,1) = 0;
+T12(2,2) = 0;
+T12(3,2) = 0;
+T12(3,3) = 0;
+T12(3,4) = 0;
+T23 = simplify(L(3).A(q3));
+T23(2,2) = 0;
+T23(3,3) = 0;
+T23(3,4) = 0;
+T34 = simplify(L(4).A(q4));
+T34(2,1) = 0;
+T34(2,2) = 0;
+T34(3,3) = 0;
+T45 = simplify(L(5).A(q5));
+
+T02 = simplify(T01*T12);
+T03 = simplify(T01*T12*T23);
+T04 = simplify(T01*T12*T23*T34);
+T05 = simplify(T01*T12*T23*T34*T45);
+
+% Vector de posicion
+x = T05(1,4);
+y = T05(2,4);
+z = T05(3,4);
+% Orientacion en Euler ZYZ
+
+% Orientacion en Euler ZYZ
+phi = pi/2;
+theta = pi/2;
+psi = q4 + q5;
+
+% Coordenadas generalizadas
+X = [x; y; z; phi; theta; psi];
+% Jacobiano Analitico
+% Se deriva por columnas 6 x 1.
+
+J1 = [diff(x, q1) diff(y, q1) diff(z, q1) diff(phi, q1) diff(theta, q1) diff(psi,q1)]';
+J2 = [diff(x, q2) diff(y, q2) diff(z, q2) diff(phi, q2) diff(theta, q2) diff(psi,q2)]';
+J3 = [diff(x, q3) diff(y, q3) diff(z, q3) diff(phi, q3) diff(theta, q3) diff(psi,q3)]';
+J4 = [diff(x, q4) diff(y, q4) diff(z, q4) diff(phi, q4) diff(theta, q4) diff(psi,q4)]';
+J5 = [diff(x, q5) diff(y, q5) diff(z, q5) diff(phi, q5) diff(theta, q5) diff(psi,q5)]';
+% Jacobiano analitico
+Janalitico = [J1 J2 J3 J4 J5]
+
+% Jacobiano geometrico
+% Calculo de los 0Zi 
+z01 = T01(1:3,3); % Art 1
+z02 = T02(1:3,3); % Art 2
+z03 = T03(1:3,3); % Art 3
+z04 = T04(1:3,3); % Art 4
+z05 = T05(1:3,3); % Art 5
+% Calculo del vector ^iP_n
+p55 = T05(1:3,4) - T05(1:3,4);
+p45 = T05(1:3,4) - T04(1:3,4);
+p35 = T05(1:3,4) - T03(1:3,4);
+p25 = T05(1:3,4) - T02(1:3,4);
+p15 = T05(1:3,4) - T01(1:3,4);
+
+% Calculo de las columnas del jabobiano
+J1 =simplify([z01              ;zeros(3,1)]); % Rotacional
+J2 =simplify([z02              ;zeros(3,1)]); % Prismatica
+J3 =simplify([z03              ;zeros(3,1)]); % Prismatica
+J4 =simplify([(skew(z04) * p45);      z04]); % Rotacional 
+J5 =simplify([(skew(z05) * p55);      z05]); % Rotacional 
+
+Jgeo = simplify([J1, J2, J3, J4, J5])
+
+% * Dada la configuraciÃ³n [q1 q2 q3 q4 ] = [1 1 1 pi/2]
+% y el parametro l1 = 1m, determine J0 .
+
+l1 = 1
+q = [1 1 1 pi/2 0];
+
+L(1) = Link('prismatic','alpha',0,'a',0,'theta',0,'offset',0,'qlim',[0 100],'modified');
+L(2) = Link('prismatic','alpha',-pi/2,'a',0,'theta',-pi/2,'offset',0,'qlim',[0 100],'modified');
+L(3) = Link('prismatic','alpha',-pi/2,'a',0,'theta',0,'offset',0,'qlim',[0 100],'modified');
+L(4) = Link('revolute','alpha',-pi/2,'a',0,'d',0,'offset',0,'modified');
+L(5) = Link('revolute','alpha',0,'a',l1,'d',0,'offset',0,'modified'); 
+P3R = SerialLink(L, 'name','3PR');
+
+q1 = q(1);
+q2 = q(2);
+q3 = q(3);
+q4 = q(4);
+q5 = q(5);
+
+Jgeo =eval(Jgeo)
+
+j0 = (P3R.jacob0([q1 q2 q3 q4 q5]))
+
+% * Dado el vector q punto= [1,5 1,2 1,8 pi/4 ]' encuentre áºŠ usando la configuraciÃ³n del item anterior.
+% Â¿Que significado tiene el vector de velocidades generalizados? (Explique su respuesta).
+
+q_dot = [1.5 1.2 1.8 pi/4 0]';
+X = Jgeo*q_dot
+
+% se puede observar en la respuesta que tiene velocicdad en los 3 ejes
+% cartesianos, al tener 1 articualicon prismatica en cada uno, y tendra una
+% velocidad angular en el eje y, que es coo se encuentra dispuesta la
+% cuarta articulacion, la cual es rotacional.
+
+
+##### SOURCE END #####
+--></body></html>
